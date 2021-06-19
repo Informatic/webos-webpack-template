@@ -1,0 +1,9 @@
+{
+  "type": "web",
+  "vendor": "My Company",
+  "main": "index.html",
+  "title": "Template App",
+  "icon": "icon.png",
+  "largeIcon": "largeIcon.png",
+  "iconColor": "#ff0000"
+}

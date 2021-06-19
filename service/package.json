@@ -1,0 +1,4 @@
+{
+    "name": "org.webosbrew.templatewebapp.service",
+    "main": "service.js"
+}
