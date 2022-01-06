@@ -12,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@webosose/ares-cli": "file:ares-cli",
     "core-js": "^3.14.0",
     "regenerator-runtime": "^0.13.7",
     "whatwg-fetch": "^3.6.2"
@@ -20,6 +19,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
+    "@webosose/ares-cli": "^2.2.0",
     "add-asset-webpack-plugin": "^2.0.1",
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^9.0.0",

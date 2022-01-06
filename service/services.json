@@ -1,9 +1,0 @@
-{
-    "id": "org.webosbrew.templatewebapp.service",
-    "description": "Example Service",
-    "services": [
-        {
-            "name": "org.webosbrew.templatewebapp.service"
-        }
-    ]
-}

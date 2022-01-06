@@ -47,6 +47,8 @@ module.exports = (env) => [
           { context: 'frontend', from: 'index.html' },
         ]
       }),
+
+      // Populate appinfo.json with package id and version
       new AddAssetWebpackPlugin('appinfo.json', (compilation) => {
         const packageJson = require('./package.json');
         const appinfoJson = require('./appinfo.json');
@@ -72,7 +74,6 @@ module.exports = (env) => [
 
     entry: {
       service: './service/service.js',
-      // userScript: './src/userScript.js',
     },
     output: {
       path: path.resolve(__dirname, './dist/service'),
@@ -93,6 +94,19 @@ module.exports = (env) => [
         patterns: [
           { context: 'service', from: '*.json' },
         ]
+      }),
+
+      // Build services.json file
+      new AddAssetWebpackPlugin('services.json', (compilation) => {
+        const { name, description = name } = require('./service/package.json');
+
+        return JSON.stringify({
+          id: name,
+          description,
+          services: [
+            { name }
+          ],
+        });
       }),
     ],
   },

@@ -1,8 +1,8 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-import serviceInfo from './services.json';
-const service = new Service(serviceInfo.id);
+import packageInfo from './package.json';
+const service = new Service(packageInfo.id);
 
 service.register("demo", (message) => {
   message.respond({
