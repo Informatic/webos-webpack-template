@@ -1,0 +1,17 @@
+@import 'flexbox.scss';
+
+#app {
+    --spatial-navigation-contain: contain;
+    --spatial-navigation-function: grid;
+    --spatial-navigation-action: focus;
+}
+
+body {
+    font-size: 16pt;
+}
+
+button {
+    font-size: 2em;
+    width: 10em;
+    margin: 0.5em;
+}

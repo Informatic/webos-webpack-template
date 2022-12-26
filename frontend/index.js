@@ -2,9 +2,14 @@ import 'core-js/stable';
 import 'regenerator-runtime';
 import 'whatwg-fetch';
 
-async function example() {
-  const resp = await fetch('http://ifconfig.me/ip');
-  document.body.innerText = (await resp.text());
-}
+import './domrect-polyfill';
+import './spatial-navigation-polyfill';
 
-example();
+import React from 'react';
+
+import {App} from './App.js';
+
+import { createRoot } from 'react-dom/client';
+const container = document.getElementById('app');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(<App tab="home" />);

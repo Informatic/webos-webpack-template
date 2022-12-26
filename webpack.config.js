@@ -25,13 +25,30 @@ module.exports = (env) => [
       chunkFormat: 'commonjs',
     },
     resolve: {
-      extensions: ['.ts', '.js'],
+      extensions: ['.ts', '.js', '.tsx', '.jsx', '.mjs'],
     },
     module: {
       rules: [
         {
           test: /\.m?js$/,
-          use: 'babel-loader',
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                [
+                  "@babel/preset-env",
+                  {
+                    targets: {
+                      chrome: "38"
+                    },
+                    useBuiltIns: "entry",
+                    corejs: "3.0"
+                  }
+                ],
+                '@babel/preset-react',
+              ],
+            },
+          },
         },
         /*
         {
@@ -39,6 +56,17 @@ module.exports = (env) => [
           use: ['style-loader', 'css-loader'],
         },
         */
+        {
+          test: /\.s[ac]ss$/i,
+          use: [
+            // Creates `style` nodes from JS strings
+            'style-loader',
+            // Translates CSS into CommonJS
+            'css-loader',
+            // Compiles Sass to CSS
+            'sass-loader',
+          ],
+        },
       ],
     },
     plugins: [
@@ -60,6 +88,11 @@ module.exports = (env) => [
         });
       }),
     ],
+
+    devServer: {
+      // contentBase: path.resolve(__dirname, './dist'),
+      hot: true,
+    },
   },
   // Service configuration
   {
@@ -87,7 +120,23 @@ module.exports = (env) => [
       rules: [
         {
           test: /\.m?js$/,
-          use: 'babel-loader',
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                [
+                  "@babel/preset-env",
+                  {
+                    targets: {
+                      chrome: "38"
+                    },
+                    useBuiltIns: "entry",
+                    corejs: "3.0"
+                  }
+                ],
+              ],
+            },
+          },
         },
       ],
     },

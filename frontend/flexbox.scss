@@ -1,0 +1,159 @@
+// --------------------------------------------------
+// Flexbox mixins
+// The spec: http://www.w3.org/TR/css3-flexbox
+// Support browserlist: > 1%, last 2 versions, safari >= 7, ie >= 10
+// --------------------------------------------------
+
+// Flexbox display
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+// <positive-number>, initial, auto, or none
+@mixin flex($flex) {
+  -webkit-box-flex: $flex;
+      -webkit-flex: $flex;
+          -ms-flex: $flex;
+              flex: $flex;
+}
+
+// row | row-reverse | column | column-reverse
+@mixin flex-direction($dir) {
+  $orient: if($dir == row or $dir == row-reverse, horizontal, vertical);
+  $order: if($dir == column-reverse or $dir == row-reverse, reverse, normal);
+
+  -webkit-box-orient: $orient; // vertical | horizontal
+  -webkit-box-direction: $order; // normal | reverse
+
+  -webkit-flex-direction: $dir;
+      -ms-flex-direction: $dir;
+          flex-direction: $dir;
+}
+
+// nowrap | wrap | wrap-reverse
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+      -ms-flex-wrap: $wrap;
+          flex-wrap: $wrap;
+}
+
+// <flex-direction> && <flex-wrap>
+@mixin flex-flow($direction, $wrap) {
+  $flow: #{$direction} #{$wrap};
+
+  @include flex-direction($direction, true);
+
+  -webkit-flex-flow: $flow;
+      -ms-flex-flow: $flow;
+          flex-flow: $flow;
+}
+
+// <integer>
+@mixin order($val) {
+  -webkit-box-ordinal-group: $val + 1;
+     -moz-box-ordinal-group: $val;
+             -ms-flex-order: $val;
+              -webkit-order: $val;
+                      order: $val;
+}
+
+// <number>
+@mixin flex-grow($grow) {
+   -webkit-box-flex: $grow;
+  -webkit-flex-grow: $grow;
+  -ms-flex-positive: $grow;
+          flex-grow: $grow;
+}
+
+// <number>
+@mixin flex-shrink($shrink) {
+  -webkit-flex-shrink: $shrink;
+    -ms-flex-negative: $shrink;
+          flex-shrink: $shrink;
+}
+
+// <width>
+@mixin flex-basis($width) {
+  -ms-flex-preferred-size: $width;
+       -webkit-flex-basis: $width;
+               flex-basis: $width;
+}
+
+// flex-start | flex-end | center | space-between | space-around
+@mixin justify-content($justify) {
+  @if $justify == flex-start {
+    -webkit-box-pack: start;
+       -ms-flex-pack: start;
+  } @else if $justify == flex-end {
+    -webkit-box-pack: end;
+       -ms-flex-pack: end;
+  } @else if $justify == space-between {
+    -webkit-box-pack: justify;
+       -ms-flex-pack: justify;
+  } @else if $justify == space-around {
+       -ms-flex-pack: distribute;
+  } @else {
+    -webkit-box-pack: $justify;
+       -ms-flex-pack: $justify;
+  }
+
+  -webkit-justify-content: $justify;
+          justify-content: $justify;
+}
+
+// flex-start | flex-end | center | space-between | space-around | stretch
+@mixin align-content($align) {
+  @if $align == flex-start {
+    -ms-flex-line-pack: start;
+  } @else if $align == flex-end {
+    -ms-flex-line-pack: end;
+  } @else if $align == space-between {
+    -ms-flex-line-pack: justify;
+  } @else if $align == space-around {
+    -ms-flex-line-pack: distribute;
+  } @else {
+    -ms-flex-line-pack: $align;
+  }
+
+  -webkit-align-content: $align;
+          align-content: $align;
+}
+
+// flex-start | flex-end | center | baseline | stretch
+@mixin align-items($align) {
+  @if $align == flex-start {
+    -webkit-box-align: start;
+       -ms-flex-align: start;
+  } @else if $align == flex-end {
+    -webkit-box-align: end;
+       -ms-flex-align: end;
+  } @else {
+    -webkit-box-align: $align;
+       -ms-flex-align: $align;
+  }
+
+  -webkit-align-items: $align;
+          align-items: $align;
+}
+
+// auto | flex-start | flex-end | center | baseline | stretch
+@mixin align-self($align) {
+  @if $align == flex-start {
+    -ms-flex-item-align: start;
+  } @else if $align == flex-end {
+    -ms-flex-item-align: end;
+  } @else {
+    -ms-flex-item-align: $align;
+  }
+
+  @if $align == auto or $align == center or $align == stretch {
+    -ms-grid-row-align: $align;
+  }
+
+  -webkit-align-self: $align;
+          align-self: $align;
+}
+// ----------------------------------------------------------------
