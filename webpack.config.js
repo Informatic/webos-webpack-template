@@ -22,6 +22,7 @@ module.exports = (env) => [
     output: {
       path: path.resolve(__dirname, './dist'),
       filename: ({ chunk: { name } }) => (name === 'userScript') ? 'webOSUserScripts/[name].js' : '[name].js',
+      chunkFormat: 'commonjs',
     },
     resolve: {
       extensions: ['.ts', '.js'],
@@ -77,6 +78,7 @@ module.exports = (env) => [
     },
     output: {
       path: path.resolve(__dirname, './dist/service'),
+      chunkFormat: 'commonjs',
     },
     resolve: {
       extensions: ['.ts', '.js'],
