@@ -26,6 +26,7 @@ module.exports = (env) => [
     },
     resolve: {
       extensions: ['.ts', '.js', '.tsx', '.jsx', '.mjs'],
+      fallback: { "stream": false },
     },
     module: {
       rules: [

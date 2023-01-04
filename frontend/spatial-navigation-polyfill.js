@@ -2122,6 +2122,10 @@
       // 20210606 fix selectionStart unavailable on checkboxes ~inf
       const startPosition = eventTarget.selectionStart;
       const endPosition = eventTarget.selectionEnd;
+
+      // Always allow up/down navigation instead of home/end jumping
+      focusNavigableArrowKey.up = focusNavigableArrowKey.down = TEXT_INPUT_TYPES.includes(eventTarget.getAttribute('type'));
+
       if (startPosition === endPosition) {
         // if there isn't any selected text
         if (startPosition === 0) {
