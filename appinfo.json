@@ -1,5 +1,7 @@
 {
   "type": "web",
+  "noSplashOnLaunch": true,
+  "defaultWindowType": "floating",
   "vendor": "My Company",
   "main": "index.html",
   "title": "Template App",

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode development",
-    "build": "webpack",
+    "build": "webpack --mode development",
     "package": "ares-package -n dist",
     "deploy": "ares-install ${npm_package_name}_${npm_package_version}_all.ipk",
     "launch": "ares-launch ${npm_package_name}"
@@ -14,8 +14,11 @@
   "license": "ISC",
   "dependencies": {
     "core-js": "^3.14.0",
+    "grommet": "^2.28.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-draggable": "^4.4.5",
+    "react-resizable": "^3.0.4",
     "regenerator-runtime": "^0.13.7",
     "whatwg-fetch": "^3.6.2"
   },
